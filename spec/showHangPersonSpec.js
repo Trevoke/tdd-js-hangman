@@ -6,7 +6,10 @@ function hangPersonHTML(dictionary) {
 hangPersonHTML.prototype = {
     displayRemainingGuesses: function displayRemainingGuesses() {
         this.remainingGuessesElement.html(this.hangman.guessesRemaining);
-    }
+    },
+    guess: function guess(letter) {
+        this.hangman.guess(letter);
+    },
 };
 
 describe("display hangPerson on HTML page", function() {
@@ -16,7 +19,14 @@ describe("display hangPerson on HTML page", function() {
         hangmanHTML.displayRemainingGuesses();
         var guessesRemainingDOMElementText = $('.remaining-guesses').html();
         expect(guessesRemainingDOMElementText).toEqual('8');
-        // put in a wrong guess
-        // check that number of guesses has changed
+    });
+    it("updates the remaining number of guesses", function() {
+        setFixtures("<div class='remaining-guesses'></div>");
+        var hangmanHTML = new hangPersonHTML(["banana"]);
+        hangmanHTML.displayRemainingGuesses();
+        hangmanHTML.guess('x');
+        hangmanHTML.displayRemainingGuesses();
+        var guessesRemainingDOMElementText = $('.remaining-guesses').html();
+        expect(guessesRemainingDOMElementText).toEqual('7');
     });
 });
