@@ -39,4 +39,19 @@ describe("display hangPerson on HTML page", function() {
         var status = $('.status').html();
         expect(status).toEqual("You win! The word was: 'a'.");
     });
+    it("tells you when you've lost", function() {
+        setFixtures("<div class='status'></div>");
+        var hangmanHTML = new hangPersonHTML(["a"]);
+        hangmanHTML.guess('x');
+        hangmanHTML.guess('x');
+        hangmanHTML.guess('x');
+        hangmanHTML.guess('x');
+        hangmanHTML.guess('x');
+        hangmanHTML.guess('x');
+        hangmanHTML.guess('x');
+        hangmanHTML.guess('x');
+        hangmanHTML.displayStatus();
+        var status = $('.status').html();
+        expect(status).toEqual("You lose! The word was: 'a'.");
+    });
 });
