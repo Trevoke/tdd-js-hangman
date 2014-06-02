@@ -1,5 +1,5 @@
 describe("hangPerson", function() {
-    var testWords = ["banana", "ananas", "grapefruit"];
+    var testDictionary = ["banana", "ananas", "grapefruit"];
     var hangMan = new hangPerson(testWords);
     it("should give me one of many words", function() {
         var secretWord = hangMan.secretWord();
