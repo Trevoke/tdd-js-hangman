@@ -1,5 +1,9 @@
 describe("display hangPerson on HTML page", function() {
-    var hangmanHTML = new hangPersonHTML(["banana"]);
+    var hangmanHTML;
+    beforeEach(function() {
+        hangmanHTML = new hangPersonHTML(['banana']);
+    });
+
     it("shows the remaining number of guesses", function() {
         setFixtures("<div class='remaining-guesses'></div>");
         hangmanHTML.initialize();
@@ -41,7 +45,20 @@ describe("display hangPerson on HTML page", function() {
         hangmanHTML.guess('x');
         hangmanHTML.guess('x');
         hangmanHTML.guess('x');
+        hangmanHTML.guess('x');
         var status = $('.status').html();
         expect(status).toEqual("You lose! The word was: 'banana'.");
+    });
+    it("allows user input through a form", function() {
+        setFixtures("<form class='user-input'><input type='text' name='guess'/><input type='submit' value='Guess!'/></form>" +
+                    "<div class='current-word-state'></div>"
+                   );
+        hangmanHTML.initialize();
+        var inputField = hangmanHTML.userInputElement();
+        inputField.val('a');
+        hangmanHTML.submitGuessElement().trigger('click');
+        expect(inputField.val()).toEqual('');
+        var currentWordState = $('.current-word-state').html();
+        expect(currentWordState).toEqual('_a_a_a');
     });
 });
