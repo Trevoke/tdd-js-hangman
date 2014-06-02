@@ -24,3 +24,10 @@
   - Draw the hangperson stick figure using CSS
 - **Bonus**
   - Implement a "hint" button that will reveal one of the letters in the word
+
+------
+
+* Show remaining number of guesses
+* Show the current word state
+* Input field + button (keyup event later)
+* Message with win or lose
