@@ -1,5 +1,5 @@
 describe("hangPerson", function() {
-    var testDictionary = ["banana", "ananas", "grapefruit"];
+    var testDictionary = ["banana", "ananas", "mane"];
     var hangMan = new hangPerson(testDictionary);
     it("should give me one of many words", function() {
         var secretWord = hangMan.secretWord;
@@ -16,6 +16,14 @@ describe("hangPerson", function() {
         hangMan.guess('a');
         var displayWord = hangMan.displayWord();
         expect(displayWord.split('')).toContain('a');
+        expect(displayWord.split('')).toContain('_');
+    });
+    it("should display all the guessed letters and all underscores", function() {
+        hangMan.guess('a');
+        hangMan.guess('n');
+        var displayWord = hangMan.displayWord();
+        expect(displayWord.split('')).toContain('a');
+        expect(displayWord.split('')).toContain('n');
         expect(displayWord.split('')).toContain('_');
     });
 });
