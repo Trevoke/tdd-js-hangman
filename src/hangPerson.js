@@ -22,7 +22,7 @@ hangPerson.prototype = {
         return '';
     },
     showWord: function showWord() {
-        return "The word was => " + this.secretWord + " <=";
+        return "The word was: '" + this.secretWord + "'.";
     },
     checkGuess: function checkGuess(letter) {
         // TODO: ensure it's just a letter and not more of the word

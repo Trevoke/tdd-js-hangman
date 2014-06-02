@@ -31,4 +31,12 @@ describe("display hangPerson on HTML page", function() {
         var currentWordState = $('.current-word-state').html();
         expect(currentWordState).toEqual("_a_a_a");
     });
+    it("tells you when you've won", function() {
+        setFixtures("<div class='status'></div>");
+        var hangmanHTML = new hangPersonHTML(["a"]);
+        hangmanHTML.guess('a');
+        hangmanHTML.displayStatus();
+        var status = $('.status').html();
+        expect(status).toEqual("You win! The word was: 'a'.");
+    });
 });
