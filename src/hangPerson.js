@@ -19,6 +19,7 @@ hangPerson.prototype = {
         if (this.guessesRemaining === 0) {
             return "You lose! " + this.showWord();
         }
+        return '';
     },
     showWord: function showWord() {
         return "The word was => " + this.secretWord + " <=";

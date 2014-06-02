@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Hangman</title>
+    <script src="src/hangPerson.js"></script>
+    <script src="lib/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript">
+     window.onload = function() {
+       var hangman = new hangPerson(['banana', 'monkey', 'soup']);
+       $('.guesses-remaining').html(hangman.guessesRemaining);
+       $('.guess-status').html(hangman.displayWord());
+       $('.guessing').on('submit', function(e) {
+         e.preventDefault();
+         var inputField = $(this).find('input[name=guess]');
+         var userGuess = inputField.val();
+         inputField.val('');
+         var hangmanOutput = hangman.guess(userGuess);
+         $('.guess-status').html(hangman.displayWord());
+         $('.guesses-remaining').html(hangman.guessesRemaining);
+         $('.game-status').html(hangmanOutput);
+       });
+     };
+    </script>
+  </head>
+  <body>
+    <div>Guesses remaining:
+      <span class='guesses-remaining'></span>
+    </div>
+    <form class='guessing'>
+      <input name='guess' type='text' placeholder='guess a letter!'/>
+      <input type='submit' value='Guess!'>
+    </form>
+    <div class='guess-status'></div>
+    <div class='game-status'></div>
+  </body>
+</html>
