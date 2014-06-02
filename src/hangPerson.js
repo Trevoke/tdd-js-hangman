@@ -11,7 +11,10 @@ hangPerson.prototype = {
         this.checkGuess(letter);
         // If lost
         if(this.currentGuess == this.secretWord) {
-            return "You win!";
+            return "You win! The word is => " + this.secretWord + " <=";
+        }
+        if(this.guessesRemaining == 0) {
+            return "You lose! The word is => " + this.secretWord + " <=";
         }
     },
     checkGuess: function checkGuess(letter) {

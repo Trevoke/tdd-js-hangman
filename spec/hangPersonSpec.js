@@ -34,6 +34,19 @@ describe("hangPerson", function() {
     it("tells you if you've won", function() {
         var hangMan = new hangPerson(["a"]);
         var hangManOutput = hangMan.guess('a');
-        expect(hangManOutput).toEqual("You win!");
+        expect(hangManOutput).toEqual("You win! The word is => a <=");
     });
+    it("tells you if you've lost", function() {
+        var hangMan = new hangPerson(["a"]);
+        var hangManOutput = hangMan.guess('b');
+        var hangManOutput = hangMan.guess('b');
+        var hangManOutput = hangMan.guess('b');
+        var hangManOutput = hangMan.guess('b');
+        var hangManOutput = hangMan.guess('b');
+        var hangManOutput = hangMan.guess('b');
+        var hangManOutput = hangMan.guess('b');
+        var hangManOutput = hangMan.guess('b');
+        expect(hangManOutput).toEqual("You lose! The word is => a <=");
+    });
+
 });
