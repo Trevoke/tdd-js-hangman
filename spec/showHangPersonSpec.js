@@ -15,4 +15,20 @@ describe("display hangPerson on HTML page", function() {
         var guessesRemainingDOMElementText = $('.remaining-guesses').html();
         expect(guessesRemainingDOMElementText).toEqual('7');
     });
+    it("shows all underscores at the beginning", function() {
+        setFixtures("<div class='current-word-state'></div>");
+        var hangmanHTML = new hangPersonHTML(["banana"]);
+        hangmanHTML.displayCurrentWordState();
+        var currentWordState = $('.current-word-state').html();
+        expect(checkAllUnderscores(currentWordState)).toBe(true);
+    });
+    it("shows underscores and guessed letters", function() {
+        setFixtures("<div class='current-word-state'></div>");
+        var hangmanHTML = new hangPersonHTML(["banana"]);
+        hangmanHTML.displayCurrentWordState();
+        hangmanHTML.guess('a');
+        hangmanHTML.displayCurrentWordState();
+        var currentWordState = $('.current-word-state').html();
+        expect(currentWordState).toEqual("_a_a_a");
+    });
 });

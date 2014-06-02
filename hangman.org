@@ -27,7 +27,7 @@
 
 ------
 
-* Show remaining number of guesses
-* Show the current word state
-* Input field + button (keyup event later)
-* Message with win or lose
+* [X] Show remaining number of guesses
+* [ ] Show the current word state
+* [ ] Input field + button (keyup event later)
+* [ ] Message with win or lose
