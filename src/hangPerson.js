@@ -8,6 +8,13 @@ function hangPerson(dictionary) {
 
 hangPerson.prototype = {
     guess: function guess(letter) {
+        this.checkGuess(letter);
+        // If lost
+        if(this.currentGuess == this.secretWord) {
+            return "You win!";
+        }
+    },
+    checkGuess: function checkGuess(letter) {
         // TODO: ensure it's just a letter and not more of the word
         if(this.unsuccessfulGuess(letter)) {
             this.guessesRemaining -= 1;
