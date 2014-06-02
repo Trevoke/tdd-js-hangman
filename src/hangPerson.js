@@ -3,12 +3,14 @@ function hangPerson(dictionary) {
     this.secretWord = this.randomWord();
     this.currentGuess = this.secretWord.replace(/./g, '_');
     this.successfulGuesses = [];
+    this.guessesRemaining = 8;
 }
 
 hangPerson.prototype = {
     guess: function guess(letter) {
         // TODO: ensure it's just a letter and not more of the word
         if(this.unsuccessfulGuess(letter)) {
+            this.guessesRemaining -= 1;
             return false;
         }
         this.successfulGuesses.push(letter);

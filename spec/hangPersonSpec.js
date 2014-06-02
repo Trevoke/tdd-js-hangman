@@ -26,4 +26,9 @@ describe("hangPerson", function() {
         expect(displayWord.split('')).toContain('n');
         expect(displayWord.split('')).toContain('_');
     });
+    it("penalizes you if you guess a wrong letter", function() {
+        expect(hangMan.guessesRemaining).toEqual(8);
+        hangMan.guess('z');
+        expect(hangMan.guessesRemaining).toEqual(7);
+    });
 });
