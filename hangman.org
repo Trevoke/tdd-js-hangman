@@ -30,4 +30,20 @@
 * [X] Show remaining number of guesses
 * [X] Show the current word state
 * [X] Message with win or lose
-* [ ] Input field + button (keyup event later)
+* [X] Input field + button (keyup event later)
+
+This last screencast will be silent.
+It will simply plug in the logic I put together on an HTML page.
+There should be no surprises, since I determined the HTML elements I wanted to use.
+I am a little unhappy, because I have a lot of hardcoded selectors, but
+you should be able to refactor stuff out even further if you want.
+Here is what I will do:
+1. Leave this up throughout the screencast so you can read it at your leisure
+2. Show bits of code from after the last screencast crashed
+3. Create an HTML page and plug in code based on tests
+4. Profit
+
+TODO:
+1. Handle edge cases (keep guessing after you win/lose)
+2. Style it
+3. Get a random word from some API somewhere instead

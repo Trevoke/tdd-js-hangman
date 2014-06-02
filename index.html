@@ -3,9 +3,23 @@
   <head>
     <meta charset="UTF-8"/>
     <title>Hangman</title>
-    <script src="src/hangPerson.js"></script>
     <script src="lib/jquery-2.1.1.min.js"></script>
+    <script src="src/hangPerson.js"></script>
+    <script src="src/hangPersonHTML.js"></script>
+    <script type="text/javascript">
+     window.onload = function() {
+       new hangPersonHTML(['banana']).initialize();
+       }
+    </script>
   </head>
   <body>
+    <div>Remaining guesses: <span class='remaining-guesses'></span></div>
+    <form class='user-input'>
+      <input type='text' name='guess' placeholder='Enter a letter'/>
+      <input type='submit' value='Guess!'>
+    </form>
+    <div class='current-word-state'>
+    </div>
+    <div class='status'></div>
   </body>
 </html>
