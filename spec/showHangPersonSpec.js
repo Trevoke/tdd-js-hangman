@@ -1,33 +1,27 @@
 describe("display hangPerson on HTML page", function() {
+    var hangmanHTML = new hangPersonHTML(["banana"]);
     it("shows the remaining number of guesses", function() {
         setFixtures("<div class='remaining-guesses'></div>");
-        var hangmanHTML = new hangPersonHTML(["banana"]);
-        hangmanHTML.displayRemainingGuesses();
+        hangmanHTML.initialize();
         var guessesRemainingDOMElementText = $('.remaining-guesses').html();
         expect(guessesRemainingDOMElementText).toEqual('8');
+
     });
     it("updates the remaining number of guesses", function() {
         setFixtures("<div class='remaining-guesses'></div>");
-        var hangmanHTML = new hangPersonHTML(["banana"]);
-        hangmanHTML.displayRemainingGuesses();
         hangmanHTML.guess('x');
-        hangmanHTML.displayRemainingGuesses();
         var guessesRemainingDOMElementText = $('.remaining-guesses').html();
         expect(guessesRemainingDOMElementText).toEqual('7');
     });
     it("shows all underscores at the beginning", function() {
         setFixtures("<div class='current-word-state'></div>");
-        var hangmanHTML = new hangPersonHTML(["banana"]);
-        hangmanHTML.displayCurrentWordState();
+        hangmanHTML.initialize();
         var currentWordState = $('.current-word-state').html();
         expect(checkAllUnderscores(currentWordState)).toBe(true);
     });
     it("shows underscores and guessed letters", function() {
         setFixtures("<div class='current-word-state'></div>");
-        var hangmanHTML = new hangPersonHTML(["banana"]);
-        hangmanHTML.displayCurrentWordState();
         hangmanHTML.guess('a');
-        hangmanHTML.displayCurrentWordState();
         var currentWordState = $('.current-word-state').html();
         expect(currentWordState).toEqual("_a_a_a");
     });
@@ -35,13 +29,11 @@ describe("display hangPerson on HTML page", function() {
         setFixtures("<div class='status'></div>");
         var hangmanHTML = new hangPersonHTML(["a"]);
         hangmanHTML.guess('a');
-        hangmanHTML.displayStatus();
         var status = $('.status').html();
         expect(status).toEqual("You win! The word was: 'a'.");
     });
     it("tells you when you've lost", function() {
         setFixtures("<div class='status'></div>");
-        var hangmanHTML = new hangPersonHTML(["a"]);
         hangmanHTML.guess('x');
         hangmanHTML.guess('x');
         hangmanHTML.guess('x');
@@ -49,9 +41,7 @@ describe("display hangPerson on HTML page", function() {
         hangmanHTML.guess('x');
         hangmanHTML.guess('x');
         hangmanHTML.guess('x');
-        hangmanHTML.guess('x');
-        hangmanHTML.displayStatus();
         var status = $('.status').html();
-        expect(status).toEqual("You lose! The word was: 'a'.");
+        expect(status).toEqual("You lose! The word was: 'banana'.");
     });
 });
