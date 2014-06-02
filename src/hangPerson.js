@@ -1,3 +1,4 @@
+'use strict';
 function hangPerson(dictionary) {
     this.dictionary = dictionary;
     this.secretWord = this.randomWord();
@@ -12,17 +13,19 @@ hangPerson.prototype = {
     },
     guess: function guess(letter) {
         this.checkGuess(letter);
-        // If lost
-        if(this.currentGuess == this.secretWord) {
-            return "You win! The word is => " + this.secretWord + " <=";
+        if (this.currentGuess === this.secretWord) {
+            return "You win! " + this.showWord();
         }
-        if(this.guessesRemaining == 0) {
-            return "You lose! The word is => " + this.secretWord + " <=";
+        if (this.guessesRemaining === 0) {
+            return "You lose! " + this.showWord();
         }
+    },
+    showWord: function showWord() {
+        return "The word was => " + this.secretWord + " <=";
     },
     checkGuess: function checkGuess(letter) {
         // TODO: ensure it's just a letter and not more of the word
-        if(this.unsuccessfulGuess(letter)) {
+        if (this.unsuccessfulGuess(letter)) {
             this.guessesRemaining -= 1;
             return false;
         }
@@ -31,7 +34,7 @@ hangPerson.prototype = {
         return true;
     },
     unsuccessfulGuess: function unsuccessfulGuess(letter) {
-        return this.secretWord.indexOf(letter) == -1;
+        return this.secretWord.indexOf(letter) === -1;
     },
     createNewDisplayWord: function createNewDisplayWord() {
         var re = new RegExp('[^' + this.successfulGuesses.join() + ']', 'g');
@@ -45,13 +48,17 @@ hangPerson.prototype = {
     },
     reset: function reset() {
         var newWord = this.secretWord;
-        if(this.dictionary.length == 1) {
+        if (this.dictionary.length === 1) {
             return;
         }
-        while(newWord == this.secretWord) {
+        while (newWord === this.secretWord) {
             newWord = this.randomWord();
         }
         this.secretWord = newWord;
         this.initialize();
+    },
+    giveUp: function giveUp() {
+        this.guessesRemaining = 0;
+        return this.showWord();
     }
 };

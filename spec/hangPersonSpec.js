@@ -33,7 +33,7 @@ describe("hangPerson", function() {
     it("tells you if you've won", function() {
         var hangMan = new hangPerson(["a"]);
         var hangManOutput = hangMan.guess('a');
-        expect(hangManOutput).toEqual("You win! The word is => a <=");
+        expect(hangManOutput).toEqual("You win! The word was => a <=");
     });
     it("tells you if you've lost", function() {
         var hangMan = new hangPerson(["a"]);
@@ -45,13 +45,19 @@ describe("hangPerson", function() {
         var hangManOutput = hangMan.guess('b');
         var hangManOutput = hangMan.guess('b');
         var hangManOutput = hangMan.guess('b');
-        expect(hangManOutput).toEqual("You lose! The word is => a <=");
+        expect(hangManOutput).toEqual("You lose! The word was => a <=");
     });
     it("can be reset to pick a new word", function() {
         oldWord = hangMan.secretWord;
         hangMan.reset();
         expect(hangMan.secretWord).not.toEqual(oldWord);
         expect(checkAllUnderscores(hangMan.displayWord())).toBe(true);
+    });
+    it("can give up and show the word!", function() {
+        var hangMan = new hangPerson(["banana"]);
+        var hangManOutput = hangMan.giveUp();
+        var output = "The word was => banana <=";
+        expect(hangManOutput).toEqual(output);
     });
 });
 
