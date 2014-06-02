@@ -39,5 +39,15 @@ hangPerson.prototype = {
     },
     displayWord: function displayWord() {
         return this.currentGuess;
+    },
+    reset: function reset() {
+        var newWord = this.secretWord;
+        if(this.dictionary.length == 1) {
+            return;
+        }
+        while(newWord == this.secretWord) {
+            newWord = this.randomWord();
+        }
+        this.secretWord = newWord;
     }
 };

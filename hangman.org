@@ -5,9 +5,12 @@
   - [X] If the player guesses correctly, any instances of that letter are revealed in the secret word
   - [X] If the player guesses incorrectly, they are penalized by taking away a guess
   - [X] If a player reveals all of the letters of the secret word, they win
-  - [ ] If a player makes 8 incorrect guesses before solving the secret word, they lose
+  - [X] If a player makes 8 incorrect guesses before solving the secret word, they lose
   - [X] Display current state of the word with non-guessed characters as underscores
   - [X] Multiple guesses must be possible
+  - [X] Reset button
+  - [ ] Give up button
+  - [ ] Make sure single letter input
 - **To Do**
   - Plan out your object model. What variables and functions will each object have? How will the different objects communicate with each other?
   - Get the logic to work and make sure you have the game working in the console first **BEFORE** translating it over to update the DOM.

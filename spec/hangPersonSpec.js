@@ -48,5 +48,9 @@ describe("hangPerson", function() {
         var hangManOutput = hangMan.guess('b');
         expect(hangManOutput).toEqual("You lose! The word is => a <=");
     });
-
+    it("can be reset to pick a new word", function() {
+        oldWord = hangMan.secretWord;
+        hangMan.reset();
+        expect(hangMan.secretWord).not.toEqual(oldWord);
+    });
 });
