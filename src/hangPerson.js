@@ -1,12 +1,15 @@
 function hangPerson(dictionary) {
     this.dictionary = dictionary;
     this.secretWord = this.randomWord();
-    this.currentGuess = this.secretWord.replace(/./g, '_');
-    this.successfulGuesses = [];
-    this.guessesRemaining = 8;
+    this.initialize();
 }
 
 hangPerson.prototype = {
+    initialize: function initialize() {
+        this.currentGuess = this.secretWord.replace(/./g, '_');
+        this.successfulGuesses = [];
+        this.guessesRemaining = 8;
+    },
     guess: function guess(letter) {
         this.checkGuess(letter);
         // If lost
@@ -49,5 +52,6 @@ hangPerson.prototype = {
             newWord = this.randomWord();
         }
         this.secretWord = newWord;
+        this.initialize();
     }
 };

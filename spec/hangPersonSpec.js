@@ -9,8 +9,7 @@ describe("hangPerson", function() {
     it("should display all underscores when the word has not been guessed", function() {
         var displayedWord = hangMan.displayWord();
         expect(displayedWord.length).toEqual(hangMan.secretWord.length);
-        var allUnderscores = displayedWord.split('').every(function(element) { return element == "_"; });
-        expect(allUnderscores).toBe(true);
+        expect(checkAllUnderscores(displayedWord)).toBe(true);
     });
     it("should display the checkGuessed letter and all underscores", function() {
         hangMan.checkGuess('a');
@@ -52,5 +51,10 @@ describe("hangPerson", function() {
         oldWord = hangMan.secretWord;
         hangMan.reset();
         expect(hangMan.secretWord).not.toEqual(oldWord);
+        expect(checkAllUnderscores(hangMan.displayWord())).toBe(true);
     });
 });
+
+function checkAllUnderscores(string) {
+    return string.split('').every(function(element) { return element == "_"; });
+}
